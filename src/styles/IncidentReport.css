@@ -1,0 +1,278 @@
+.incident-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.incident-header {
+  margin-bottom: 8px;
+}
+
+.incident-header h1 {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.incident-header p {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+/* ─── FORM ─────────────────────────────────────────────────────── */
+.incident-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ─── CATEGORY GRID ────────────────────────────────────────────── */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.category-btn {
+  padding: 14px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family);
+}
+
+.category-btn:hover {
+  border-color: var(--ink-soft);
+  background: var(--surface2);
+}
+
+.category-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.category-icon {
+  font-size: 24px;
+}
+
+.category-name {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ─── TEXTAREA ────────────────────────────────────────────────── */
+.form-textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--ink);
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(26, 60, 255, 0.1);
+}
+
+.form-textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.char-count {
+  font-size: 12px;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+/* ─── PHOTO INPUT ────────────────────────────────────────────── */
+.photo-input-label {
+  display: block;
+  padding: 20px;
+  border: 2px dashed var(--border-strong);
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--surface2);
+}
+
+.photo-input-label:hover {
+  border-color: var(--accent);
+  background: rgba(26, 60, 255, 0.05);
+}
+
+.photo-input-text {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-mid);
+  font-weight: 500;
+}
+
+/* ─── PHOTO PREVIEW ────────────────────────────────────────────── */
+.photo-preview-incident {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  margin-top: 8px;
+}
+
+.photo-preview-incident img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.btn-remove-photo {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-remove-photo:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* ─── SUBMIT BUTTON ────────────────────────────────────────────── */
+.btn-submit {
+  padding: 12px 16px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 60, 255, 0.2);
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ─── SUCCESS MESSAGE ────────────────────────────────────────────– */
+.success-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(74, 248, 212, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #009688;
+}
+
+.success-message h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.success-message p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  max-width: 300px;
+}
+
+/* ─── RECENT INCIDENTS ────────────────────────────────────────– */
+.recent-incidents {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.recent-incidents h3 {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.recent-empty {
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-align: center;
+  padding: 20px;
+}
+
+/* ─── MOBILE ────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .incident-form {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-btn {
+    padding: 12px 10px;
+  }
+}

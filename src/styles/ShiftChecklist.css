@@ -1,0 +1,305 @@
+.checklist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.checklist-header {
+  margin-bottom: 8px;
+}
+
+.checklist-header h1 {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.checklist-subtitle {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+/* ─── PROGRESS ─────────────────────────────────────────────────────── */
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--surface3);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #0f2ab8);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+/* ─── TASKS LIST ────────────────────────────────────────────────────── */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.task-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 2px 6px rgba(13, 31, 34, 0.06);
+}
+
+.task-card.task-status-done {
+  background: rgba(74, 248, 212, 0.05);
+  border-color: rgba(74, 248, 212, 0.2);
+}
+
+.task-card.task-status-escalated {
+  background: rgba(230, 126, 34, 0.05);
+  border-color: rgba(230, 126, 34, 0.2);
+}
+
+/* ─── TASK HEADER ────────────────────────────────────────────────────── */
+.task-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.task-checkbox {
+  flex-shrink: 0;
+}
+
+.task-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.task-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.task-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.task-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.task-category {
+  background: var(--surface2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.task-time {
+  font-weight: 500;
+}
+
+.task-duration {
+  color: var(--ink-faint);
+}
+
+.task-status-badge {
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+/* ─── TASK DETAILS ────────────────────────────────────────────────────── */
+.task-details {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.details-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.task-notes {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-mid);
+}
+
+/* ─── TASK ACTIONS ────────────────────────────────────────────────────── */
+.task-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-action {
+  flex: 1;
+  min-width: 120px;
+  padding: 10px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  background: white;
+  color: var(--ink);
+}
+
+.btn-action:hover {
+  border-color: var(--ink-soft);
+  background: var(--surface3);
+}
+
+.btn-progress {
+  background: var(--surface3);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-progress:hover {
+  background: rgba(26, 60, 255, 0.1);
+}
+
+.btn-complete {
+  background: rgba(74, 248, 212, 0.15);
+  border-color: var(--neon);
+  color: #009688;
+}
+
+.btn-complete:hover {
+  background: rgba(74, 248, 212, 0.25);
+}
+
+.btn-escalate {
+  background: rgba(230, 126, 34, 0.1);
+  border-color: #e67e22;
+  color: #d35400;
+}
+
+.btn-escalate:hover {
+  background: rgba(230, 126, 34, 0.2);
+}
+
+.btn-photo {
+  background: white;
+  border-color: var(--border-strong);
+}
+
+.btn-photo:hover {
+  background: var(--surface2);
+  border-color: var(--ink-soft);
+}
+
+.escalated-note {
+  padding: 10px 12px;
+  background: rgba(230, 126, 34, 0.1);
+  border-left: 3px solid #e67e22;
+  font-size: 13px;
+  color: #c23b0f;
+  border-radius: 4px;
+}
+
+/* ─── PHOTO PREVIEW ────────────────────────────────────────────────────── */
+.photo-preview {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+}
+
+.photo-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.btn-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-close:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* ─── SYNC STATUS ────────────────────────────────────────────────────── */
+.sync-status {
+  text-align: center;
+  padding: 12px;
+  margin-top: 12px;
+}
+
+.sync-text {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* ─── MOBILE ────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .task-meta {
+    gap: 8px;
+  }
+
+  .task-actions {
+    gap: 6px;
+  }
+
+  .btn-action {
+    min-width: 100px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}

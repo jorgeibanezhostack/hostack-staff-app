@@ -1,0 +1,116 @@
+/* ─── PALETTE ─────────────────────────────────────────────────────────── */
+:root {
+  --ink: #0d1f22;
+  --ink-mid: #1e3a3f;
+  --ink-soft: #4a6e74;
+  --ink-faint: #7a9ea4;
+  --surface: #ffffff;
+  --surface2: #f4f8f8;
+  --surface3: #e6f0f1;
+  --accent: #1a3cff;
+  --accent-dark: #0f2ab8;
+  --accent-light: #4a5fff;
+  --neon: #4af8d4;
+  --border: rgba(13, 31, 34, 0.08);
+  --border-strong: rgba(13, 31, 34, 0.15);
+
+  --font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.app-nav {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-btn:hover {
+  color: var(--ink-mid);
+  background: var(--surface2);
+}
+
+.nav-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.nav-btn.logout {
+  background: var(--surface2);
+  color: var(--ink-soft);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 6px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 18px;
+  color: var(--ink-soft);
+}
+
+/* ─── MOBILE OPTIMIZATIONS ─────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .app-main {
+    padding: 12px;
+  }
+
+  .nav-btn {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+}
