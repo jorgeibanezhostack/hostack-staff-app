@@ -103,7 +103,7 @@
 .form-textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(26, 60, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(1, 145, 121, 0.1);
 }
 
 .form-textarea::placeholder {
@@ -130,7 +130,7 @@
 
 .photo-input-label:hover {
   border-color: var(--accent);
-  background: rgba(26, 60, 255, 0.05);
+  background: rgba(1, 145, 121, 0.05);
 }
 
 .photo-input-text {

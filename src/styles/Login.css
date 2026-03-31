@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f4f8f8 0%, #e6f0f1 100%);
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
   padding: 16px;
 }
 
@@ -70,7 +70,7 @@
 .form-group input:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(26, 60, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(1, 145, 121, 0.1);
 }
 
 .form-group input::placeholder {
@@ -104,7 +104,7 @@
 .btn-primary:hover:not(:disabled) {
   background: var(--accent-dark);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(26, 60, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(1, 145, 121, 0.2);
 }
 
 .btn-primary:disabled {
