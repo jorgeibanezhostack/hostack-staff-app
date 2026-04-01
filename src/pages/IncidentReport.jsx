@@ -8,7 +8,7 @@ const CATEGORIES = [
   { id: 'other', label: 'Other', icon: '❓' },
 ]
 
-export default function IncidentReport({ onNewIncident }) {
+export default function IncidentReport({ staff, onNewIncident }) {
   const [category, setCategory] = useState('')
   const [description, setDescription] = useState('')
   const [photo, setPhoto] = useState(null)

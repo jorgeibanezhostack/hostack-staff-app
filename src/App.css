@@ -50,13 +50,92 @@
 
 .app-nav {
   display: flex;
+  align-items: center;
   gap: 0;
   border-bottom: 1px solid var(--border);
   background: var(--surface);
-  padding: 0;
+  padding: 0 4px;
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+/* Staff identity in nav */
+.nav-identity {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 12px;
+  min-width: 80px;
+  border-right: 1px solid var(--border);
+  margin-right: 4px;
+}
+
+.nav-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.nav-role {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.nav-links {
+  display: flex;
+  flex: 1;
+}
+
+.nav-btn-admin {
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+}
+
+.nav-signout {
+  flex: 0 !important;
+  padding: 12px 14px !important;
+  font-size: 12px !important;
+  color: var(--ink-faint) !important;
+  border-left: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* No staff record screen */
+.app-no-staff {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--surface);
+  padding: 24px;
+}
+
+.no-staff-card {
+  text-align: center;
+  max-width: 360px;
+}
+
+.no-staff-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.no-staff-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.no-staff-card p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 8px;
 }
 
 .nav-btn {

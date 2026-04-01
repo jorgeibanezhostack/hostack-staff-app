@@ -151,6 +151,57 @@
   color: var(--ink-faint);
 }
 
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  text-decoration: underline;
+  padding: 0;
+}
+
+/* ─── INVITE ACCEPT UI ─────────────────────────────────────────── */
+.invite-welcome {
+  background: rgba(1, 145, 121, 0.06);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.invite-welcome-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.invite-welcome-role {
+  margin-bottom: 6px;
+}
+
+.invite-role-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(1, 145, 121, 0.12);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.invite-welcome-email {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
 @media (max-width: 480px) {
   .login-card {
     padding: 32px 20px;

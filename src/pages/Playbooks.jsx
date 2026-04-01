@@ -342,7 +342,7 @@ Cada habitación debe estar lista para una foto de revista. Los huéspedes pagan
 
 const STAFF_DATA_KEY = 'hostack_staff_session'
 
-export default function Playbooks() {
+export default function Playbooks({ staff }) {
   const [playbooks, setPlaybooks] = useState([])
   const [selectedPlaybook, setSelectedPlaybook] = useState(null)
   const [searchTerm, setSearchTerm] = useState('')
@@ -353,9 +353,10 @@ export default function Playbooks() {
   const [loading, setLoading] = useState(true)
   const [usingSupabase, setUsingSupabase] = useState(false)
 
-  // Try to detect actual staff role from session/localStorage
-  const staffRole = localStorage.getItem('hostack_role') || 'Manager'
-  const staffId = localStorage.getItem('hostack_staff_id') || null
+  // Use staff prop (from auth context) with localStorage fallback for demo mode
+  const staffRole = staff?.role || localStorage.getItem('hostack_role') || 'Manager'
+  const staffId = staff?.id || localStorage.getItem('hostack_staff_id') || null
+  const propertyId = staff?.property_id || '550e8400-e29b-41d4-a716-446655440000'
   const isManager = ['Manager', 'Team Leader'].includes(staffRole)
 
   useEffect(() => {
@@ -369,7 +370,7 @@ export default function Playbooks() {
       const { data, error } = await supabase
         .from('playbooks')
         .select('*')
-        .eq('property_id', '550e8400-e29b-41d4-a716-446655440000')
+        .eq('property_id', propertyId)
         .eq('is_archived', false)
         .order('created_at', { ascending: false })
 

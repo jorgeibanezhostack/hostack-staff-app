@@ -50,7 +50,7 @@ const DEMO_TASKS = [
   },
 ]
 
-export default function ShiftChecklist() {
+export default function ShiftChecklist({ staff }) {
   const [tasks, setTasks] = useState(DEMO_TASKS)
   const [expandedTaskId, setExpandedTaskId] = useState(null)
   const [showPhoto, setShowPhoto] = useState(null)

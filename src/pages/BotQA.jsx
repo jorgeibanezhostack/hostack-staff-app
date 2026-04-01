@@ -58,7 +58,7 @@ const DEMO_INCIDENTS = [
   }
 ]
 
-export default function BotQA() {
+export default function BotQA({ staff }) {
   const [question, setQuestion] = useState('')
   const [conversations, setConversations] = useState([])
   const [loading, setLoading] = useState(false)
