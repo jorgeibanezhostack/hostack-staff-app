@@ -1,0 +1,425 @@
+/* ─── PLAYBOOKS CONTAINER ─────────────────────────────────────── */
+.playbooks-container {
+  padding: 16px;
+  max-width: 1200px;
+}
+
+.playbooks-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-soft);
+  font-size: 16px;
+}
+
+.playbooks-header {
+  margin-bottom: 28px;
+}
+
+.playbooks-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.playbooks-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.playbooks-header p {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.btn-upload-sop {
+  padding: 10px 18px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+}
+
+.btn-upload-sop:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+/* ─── FILTERS ──────────────────────────────────────────────────── */
+.playbooks-filters {
+  background: var(--surface2);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--ink);
+  background: var(--surface);
+  margin-bottom: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.search-input::placeholder {
+  color: var(--ink-soft);
+  opacity: 0.6;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.filter-select-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.filter-select-wrapper label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.filter-select {
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23019179' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 20px;
+  padding-right: 32px;
+}
+
+.filter-select:hover {
+  border-color: var(--accent);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(1, 145, 121, 0.1);
+}
+
+.filter-select option {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* ─── PLAYBOOKS GRID ───────────────────────────────────────────── */
+.playbooks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.playbook-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.playbook-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(1, 145, 121, 0.1);
+  transform: translateY(-2px);
+}
+
+.playbook-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.playbook-card-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+  flex: 1;
+}
+
+.playbook-type-small {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(1, 145, 121, 0.1);
+  color: var(--accent);
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.playbook-category {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 4px 0;
+}
+
+.playbook-subcategory {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 4px 0 8px;
+}
+
+.playbook-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  color: var(--ink-mid);
+}
+
+.playbook-preview {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink-soft);
+}
+
+.empty-state p {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.empty-state small {
+  display: block;
+  font-size: 13px;
+}
+
+/* ─── PLAYBOOK DETAIL ──────────────────────────────────────────── */
+.playbook-detail {
+  max-width: 800px;
+}
+
+.btn-back {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  font-family: var(--font-family);
+  transition: opacity 0.2s ease;
+}
+
+.btn-back:hover {
+  opacity: 0.8;
+}
+
+.playbook-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.playbook-badge,
+.playbook-sub-badge,
+.playbook-type {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.playbook-badge {
+  background: rgba(1, 145, 121, 0.15);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.playbook-sub-badge {
+  background: rgba(1, 145, 121, 0.08);
+  color: var(--accent-dark);
+}
+
+.playbook-type {
+  background: var(--surface2);
+  color: var(--ink-soft);
+}
+
+.playbook-detail h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 12px 0 8px;
+}
+
+.playbook-roles {
+  margin-bottom: 20px;
+  padding: 12px;
+  background: var(--surface2);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+
+.playbook-roles small {
+  color: var(--ink-mid);
+  font-size: 12px;
+}
+
+/* ─── MARKDOWN CONTENT ─────────────────────────────────────────── */
+.playbook-content {
+  margin-top: 24px;
+}
+
+.markdown-content {
+  color: var(--ink);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.markdown-content h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 24px 0 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.markdown-content h2:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.markdown-content h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 16px 0 8px;
+}
+
+.markdown-content p {
+  margin: 12px 0;
+  color: var(--ink-mid);
+}
+
+.markdown-content li {
+  margin-left: 20px;
+  margin-bottom: 8px;
+  color: var(--ink-mid);
+}
+
+.checkbox-line {
+  padding: 8px 0;
+  margin-left: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  background: var(--surface2);
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+}
+
+.markdown-content br {
+  height: 8px;
+  display: block;
+}
+
+/* ─── MOBILE OPTIMIZATIONS ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .playbooks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-select-wrapper {
+    min-width: auto;
+  }
+
+  .playbook-detail {
+    padding: 0;
+  }
+
+  .markdown-content h2 {
+    font-size: 16px;
+  }
+
+  .markdown-content h3 {
+    font-size: 14px;
+  }
+}

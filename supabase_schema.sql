@@ -75,6 +75,24 @@ CREATE TABLE notifications (
   created_at TIMESTAMP DEFAULT now()
 );
 
+-- ─── PLAYBOOKS TABLE ──────────────────────────────────────────────
+CREATE TABLE playbooks (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  property_id UUID NOT NULL,
+  title TEXT NOT NULL,
+  category TEXT NOT NULL, -- 'Team Leader', 'Volunteer', 'Maintenance', 'Kitchen', 'Quick Reference', 'Guidelines'
+  subcategory TEXT, -- e.g. 'Daily Operations', 'Weekly Rota', 'House Rules'
+  description TEXT,
+  role_tags TEXT[], -- ['Team Leader', 'Volunteer', 'Manager']
+  content_type TEXT NOT NULL, -- 'sop', 'checklist', 'guideline', 'quick_ref'
+  content_text TEXT, -- For text-based content
+  file_url TEXT, -- For PDF/Doc links
+  order_index INT DEFAULT 0,
+  is_archived BOOLEAN DEFAULT false,
+  created_at TIMESTAMP DEFAULT now(),
+  updated_at TIMESTAMP DEFAULT now()
+);
+
 -- ─── INDEXES FOR PERFORMANCE ──────────────────────────────────────
 CREATE INDEX idx_staff_property ON staff(property_id);
 CREATE INDEX idx_checklist_staff ON checklist_tasks(staff_id);
@@ -85,12 +103,32 @@ CREATE INDEX idx_incidents_staff ON incidents(staff_id);
 CREATE INDEX idx_incidents_status ON incidents(status);
 CREATE INDEX idx_notifications_staff ON notifications(staff_id);
 CREATE INDEX idx_notifications_read ON notifications(read_at);
+CREATE INDEX idx_playbooks_property ON playbooks(property_id);
+CREATE INDEX idx_playbooks_category ON playbooks(category);
+CREATE INDEX idx_playbooks_role ON playbooks USING GIN(role_tags);
 
 -- ─── REALTIME SUBSCRIPTIONS ──────────────────────────────────────
 -- Enable realtime for these tables in Supabase dashboard:
 -- - checklist_tasks
 -- - incidents
 -- - notifications
+
+-- ─── WHATSAPP_CONVERSATIONS TABLE ────────────────────────────────
+CREATE TABLE whatsapp_conversations (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  staff_id UUID NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
+  staff_phone TEXT NOT NULL, -- E.164 format: +1234567890
+  question TEXT NOT NULL,
+  answer TEXT NOT NULL,
+  context JSONB, -- Stores raw search results {playbooks: [...], tasks: [...], incidents: [...]}
+  read_at TIMESTAMP,
+  created_at TIMESTAMP DEFAULT now()
+);
+
+-- ─── WHATSAPP INDEXES ─────────────────────────────────────────────
+CREATE INDEX idx_whatsapp_staff ON whatsapp_conversations(staff_id);
+CREATE INDEX idx_whatsapp_phone ON whatsapp_conversations(staff_phone);
+CREATE INDEX idx_whatsapp_created ON whatsapp_conversations(created_at DESC);
 
 -- ─── ROW LEVEL SECURITY (RLS) ────────────────────────────────────
 -- Enable RLS on all tables, then add policies:
@@ -102,6 +140,8 @@ ALTER TABLE staff ENABLE ROW LEVEL SECURITY;
 ALTER TABLE checklist_tasks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE incidents ENABLE ROW LEVEL SECURITY;
 ALTER TABLE notifications ENABLE ROW LEVEL SECURITY;
+ALTER TABLE playbooks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE whatsapp_conversations ENABLE ROW LEVEL SECURITY;
 
 -- Staff can view their own record
 CREATE POLICY "staff_view_own" ON staff
@@ -128,3 +168,26 @@ CREATE POLICY "incidents_view" ON incidents
 -- Notifications visible to recipient
 CREATE POLICY "notifications_view" ON notifications
   FOR SELECT USING (staff_id = auth.uid()::uuid);
+
+-- Playbooks visible to all staff at property
+CREATE POLICY "playbooks_view" ON playbooks
+  FOR SELECT USING (property_id IN (
+    SELECT property_id FROM staff WHERE id = auth.uid()::uuid
+  ));
+
+-- WhatsApp conversations: staff can view their own
+CREATE POLICY "whatsapp_view_own" ON whatsapp_conversations
+  FOR SELECT USING (staff_id = auth.uid()::uuid);
+
+-- WhatsApp conversations: staff can insert their own
+CREATE POLICY "whatsapp_insert_own" ON whatsapp_conversations
+  FOR INSERT WITH CHECK (staff_id = auth.uid()::uuid);
+
+-- Managers can view all conversations from their property staff
+CREATE POLICY "whatsapp_view_property" ON whatsapp_conversations
+  FOR SELECT USING (
+    staff_id IN (
+      SELECT id FROM staff
+      WHERE property_id = (SELECT property_id FROM staff WHERE id = auth.uid()::uuid)
+    )
+  );

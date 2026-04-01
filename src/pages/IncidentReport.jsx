@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/IncidentReport.css'
 
 const CATEGORIES = [
@@ -15,6 +15,14 @@ export default function IncidentReport({ onNewIncident }) {
   const [photoPreview, setPhotoPreview] = useState(null)
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [incidents, setIncidents] = useState([])
+
+  useEffect(() => {
+    const saved = localStorage.getItem('staff_incidents')
+    if (saved) {
+      setIncidents(JSON.parse(saved))
+    }
+  }, [])
 
   function handlePhotoSelect(e) {
     const file = e.target.files?.[0]
@@ -40,7 +48,19 @@ export default function IncidentReport({ onNewIncident }) {
     await new Promise(r => setTimeout(r, 600))
     setLoading(false)
 
-    // In real app, post to Supabase here
+    // Save incident to localStorage
+    const newIncident = {
+      id: Date.now(),
+      category,
+      description,
+      timestamp: new Date().toLocaleString(),
+      hasPhoto: !!photo
+    }
+
+    const updated = [newIncident, ...incidents]
+    setIncidents(updated)
+    localStorage.setItem('staff_incidents', JSON.stringify(updated))
+
     console.log('Incident reported:', { category, description, photo })
 
     setSubmitted(true)
@@ -154,7 +174,24 @@ export default function IncidentReport({ onNewIncident }) {
       {/* RECENT INCIDENTS */}
       <div className="recent-incidents">
         <h3>Recent Reports</h3>
-        <p className="recent-empty">No incidents reported today.</p>
+        {incidents.length === 0 ? (
+          <p className="recent-empty">No incidents reported today.</p>
+        ) : (
+          <div className="incidents-list">
+            {incidents.map((incident) => (
+              <div key={incident.id} className="incident-item">
+                <div className="incident-header-row">
+                  <span className="incident-category">
+                    {CATEGORIES.find(c => c.id === incident.category)?.icon} {CATEGORIES.find(c => c.id === incident.category)?.label}
+                  </span>
+                  <span className="incident-time">{incident.timestamp}</span>
+                </div>
+                <p className="incident-desc">{incident.description}</p>
+                {incident.hasPhoto && <span className="incident-photo-badge">📷 Photo attached</span>}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

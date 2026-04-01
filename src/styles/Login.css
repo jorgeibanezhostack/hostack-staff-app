@@ -22,18 +22,29 @@
   margin-bottom: 40px;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.logo-icon {
+  color: var(--accent);
+  filter: drop-shadow(0 2px 4px rgba(1, 145, 121, 0.15));
+}
+
 .login-header h1 {
   font-family: var(--font-family);
-  font-size: 28px;
-  font-weight: 300;
-  letter-spacing: 0.04em;
-  color: var(--ink);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--accent);
   margin-bottom: 8px;
 }
 
 .login-header p {
   font-size: 14px;
-  color: var(--ink-soft);
+  color: var(--ink-mid);
 }
 
 .login-form {
@@ -51,9 +62,10 @@
 .form-group label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--ink-mid);
+  color: var(--ink);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  opacity: 0.85;
 }
 
 .form-group input {
@@ -64,7 +76,23 @@
   font-size: 14px;
   color: var(--ink);
   background: var(--surface);
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  accent-color: var(--accent);
+}
+
+/* Ensure inputs are visible in both light and dark mode */
+@media (prefers-color-scheme: light) {
+  .form-group input {
+    background: #ffffff;
+    color: var(--ink);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .form-group input {
+    background: var(--surface);
+    color: var(--ink);
+  }
 }
 
 .form-group input:focus {
@@ -74,7 +102,8 @@
 }
 
 .form-group input::placeholder {
-  color: var(--ink-faint);
+  color: var(--ink-soft);
+  opacity: 0.6;
 }
 
 .error-message {

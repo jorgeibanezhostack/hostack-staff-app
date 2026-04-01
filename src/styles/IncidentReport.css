@@ -41,9 +41,10 @@
 .form-label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--ink-mid);
+  color: var(--ink);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  opacity: 0.9;
 }
 
 /* ─── CATEGORY GRID ────────────────────────────────────────────── */
@@ -57,7 +58,7 @@
   padding: 14px 12px;
   border: 1px solid var(--border-strong);
   border-radius: 6px;
-  background: var(--surface);
+  background: var(--surface2);
   cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
@@ -65,11 +66,13 @@
   align-items: center;
   gap: 6px;
   font-family: var(--font-family);
+  color: var(--ink);
 }
 
 .category-btn:hover {
-  border-color: var(--ink-soft);
-  background: var(--surface2);
+  border-color: var(--accent-light);
+  background: var(--surface3);
+  color: var(--ink);
 }
 
 .category-btn.active {
@@ -96,6 +99,7 @@
   font-family: var(--font-family);
   font-size: 14px;
   color: var(--ink);
+  background: var(--surface);
   resize: vertical;
   transition: border-color 0.2s ease;
 }
@@ -103,11 +107,12 @@
 .form-textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(1, 145, 121, 0.1);
+  box-shadow: 0 0 0 3px rgba(74, 248, 212, 0.15);
 }
 
 .form-textarea::placeholder {
-  color: var(--ink-faint);
+  color: var(--ink-soft);
+  opacity: 0.8;
 }
 
 .char-count {
@@ -130,13 +135,13 @@
 
 .photo-input-label:hover {
   border-color: var(--accent);
-  background: rgba(1, 145, 121, 0.05);
+  background: var(--surface3);
 }
 
 .photo-input-text {
   display: block;
   font-size: 14px;
-  color: var(--ink-mid);
+  color: var(--ink);
   font-weight: 500;
 }
 
@@ -259,6 +264,53 @@
   color: var(--ink-soft);
   text-align: center;
   padding: 20px;
+}
+
+.incidents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.incident-item {
+  padding: 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.incident-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.incident-category {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.incident-time {
+  font-size: 12px;
+  color: var(--ink-faint);
+}
+
+.incident-desc {
+  color: var(--ink-mid);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.incident-photo-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: rgba(1, 145, 121, 0.1);
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--accent);
 }
 
 /* ─── MOBILE ────────────────────────────────────────────────── */
