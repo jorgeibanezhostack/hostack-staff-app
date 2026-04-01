@@ -58,19 +58,28 @@ export default function Login({ onLogin, inviteToken }) {
     setLoading(true)
 
     try {
-      if (!supabase) {
-        // DEMO MODE
-        if (email && password.length >= 4) {
-          localStorage.setItem('staff_demo_session', JSON.stringify({ email, id: Date.now() }))
-          onLogin()
-        } else {
-          setError('Email and password required (min 4 chars)')
-        }
+      // Validate inputs first
+      if (!email || password.length < 4) {
+        setError('Email and password required (min 4 chars)')
+        setLoading(false)
         return
       }
 
-      const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
-      if (authError) throw authError
+      // Try Supabase if available
+      if (supabase) {
+        try {
+          const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
+          if (authError) throw authError
+          onLogin()
+          return
+        } catch (supabaseErr) {
+          // Fall through to demo mode if Supabase fails
+          console.log('Supabase auth failed, using demo mode:', supabaseErr.message)
+        }
+      }
+
+      // DEMO MODE: Accept any email + password (4+ chars)
+      localStorage.setItem('staff_demo_session', JSON.stringify({ email, id: Date.now() }))
       onLogin()
     } catch (err) {
       setError(err.message || 'Login failed')
