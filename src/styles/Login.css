@@ -202,12 +202,139 @@
   margin-top: 4px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .login-container {
+    padding: 12px;
+  }
+
   .login-card {
-    padding: 32px 20px;
+    padding: 36px 24px;
   }
 
   .login-header h1 {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .login-header p {
+    font-size: 13px;
+  }
+
+  .form-group input {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 8px;
+  }
+
+  .login-card {
+    padding: 28px 18px;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .login-header {
+    margin-bottom: 32px;
+  }
+
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .login-header h1 {
+    font-size: 22px;
+  }
+
+  .login-header p {
+    font-size: 12px;
+  }
+
+  .login-form {
+    gap: 16px;
+  }
+
+  .form-group input {
+    padding: 11px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  .btn-primary {
+    padding: 11px 14px;
+    font-size: 13px;
+  }
+
+  .invite-welcome-name {
+    font-size: 16px;
+  }
+
+  .invite-role-pill {
+    font-size: 11px;
+  }
+
+  .error-message {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-card {
+    padding: 24px 14px;
+  }
+
+  .logo-container {
+    margin-bottom: 12px;
+  }
+
+  .logo-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .login-header h1 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .login-header p {
+    font-size: 11px;
+  }
+
+  .login-header {
+    margin-bottom: 24px;
+  }
+
+  .form-group {
+    gap: 4px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input {
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .login-footer {
+    margin-top: 20px;
+  }
+
+  .hint {
+    font-size: 11px;
+  }
+
+  .link-btn {
+    font-size: 12px;
   }
 }

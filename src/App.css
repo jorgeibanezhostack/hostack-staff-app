@@ -205,13 +205,97 @@
 }
 
 /* ─── MOBILE OPTIMIZATIONS ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app-nav {
+    flex-wrap: wrap;
+    padding: 0 2px;
+  }
+
+  .nav-identity {
+    min-width: auto;
+    padding: 8px 10px;
+  }
+
+  .nav-name {
+    font-size: 12px;
+  }
+
+  .nav-role {
+    font-size: 9px;
+  }
+
+  .nav-links {
+    flex: 1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-btn {
+    padding: 10px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .app-main {
+    padding: 14px;
+  }
+}
+
 @media (max-width: 480px) {
+  .app-nav {
+    padding: 0;
+  }
+
+  .nav-identity {
+    padding: 6px 8px;
+    min-width: 65px;
+  }
+
+  .nav-name {
+    font-size: 11px;
+  }
+
+  .nav-role {
+    font-size: 8px;
+  }
+
+  .nav-btn {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .nav-signout {
+    padding: 8px 10px !important;
+    font-size: 9px !important;
+    border-left: none;
+  }
+
   .app-main {
     padding: 12px;
   }
 
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-identity {
+    min-width: 55px;
+    padding: 4px 6px;
+  }
+
+  .nav-name {
+    font-size: 9px;
+  }
+
   .nav-btn {
-    padding: 10px 8px;
-    font-size: 13px;
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+
+  .app-main {
+    padding: 8px;
   }
 }
