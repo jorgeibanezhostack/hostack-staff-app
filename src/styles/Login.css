@@ -93,6 +93,15 @@
     background: var(--surface);
     color: var(--ink);
   }
+
+  @media (max-width: 480px) {
+    .login-container {
+      background: var(--surface);
+    }
+    .login-card {
+      background: var(--surface);
+    }
+  }
 }
 
 .form-group input:focus {
@@ -226,13 +235,19 @@
 
 @media (max-width: 480px) {
   .login-container {
-    padding: 8px;
+    padding: 0;
+    align-items: flex-start;
+    background: white;
   }
 
   .login-card {
-    padding: 28px 18px;
+    padding: 48px 24px 32px;
     max-width: 100%;
-    border-radius: 8px;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
   }
 
   .login-header {
