@@ -237,7 +237,10 @@
   .login-container {
     padding: 0;
     align-items: stretch;
+    justify-content: flex-start;
     background: white;
+    height: 100vh;
+    height: 100dvh;
     min-height: 100vh;
     min-height: 100dvh;
   }
@@ -249,6 +252,7 @@
     padding: 48px 28px 40px;
     max-width: 100%;
     width: 100%;
+    height: 100%;
     min-height: 100vh;
     min-height: 100dvh;
     border-radius: 0;
