@@ -236,18 +236,25 @@
 @media (max-width: 480px) {
   .login-container {
     padding: 0;
-    align-items: flex-start;
+    align-items: stretch;
     background: white;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .login-card {
-    padding: 48px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 28px 40px;
     max-width: 100%;
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
     border-radius: 0;
     border: none;
     box-shadow: none;
+    flex: 1;
   }
 
   .login-header {
