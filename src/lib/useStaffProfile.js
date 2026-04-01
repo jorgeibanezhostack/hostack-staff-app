@@ -32,8 +32,8 @@ export function useStaffProfile(session) {
     setLoading(true)
     setError(null)
 
-    // Demo mode
-    if (!supabase) {
+    // Demo mode: either no Supabase or session is a demo session
+    if (!supabase || session?.demo) {
       const demo = localStorage.getItem('staff_demo_session')
       if (demo) {
         try {
@@ -64,8 +64,19 @@ export function useStaffProfile(session) {
       }
     } catch (err) {
       console.error('Failed to load staff profile:', err)
-      setError(err.message)
-      setStaff(null)
+      // If Supabase fails but we have a demo session, use demo profile
+      const demo = localStorage.getItem('staff_demo_session')
+      if (demo) {
+        try {
+          const parsed = JSON.parse(demo)
+          setStaff({ ...DEMO_STAFF, email: parsed.email, name: parsed.email.split('@')[0] })
+        } catch {
+          setStaff(DEMO_STAFF)
+        }
+      } else {
+        setError(err.message)
+        setStaff(null)
+      }
     } finally {
       setLoading(false)
     }
