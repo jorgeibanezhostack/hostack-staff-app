@@ -1,6 +1,16 @@
-/* ─── PALETTE ─────────────────────────────────────────────────────────── */
+/* ─── HOSTACK DESIGN SYSTEM — STAFF APP ─────────────────────────────── */
+/* Updated April 24, 2026 | Official brand colors */
 :root {
-  /* LIGHT MODE (default) */
+  /* ─── TEAL SCALE (Official) ─────────────────────────────────────── */
+  --teal: #004F59;
+  --teal-dark: #052f36;
+  --teal-deep: #031e23;
+  --turquoise: #00BFB3;
+  
+  /* ─── NEON ACCENT ──────────────────────────────────────────────── */
+  --neon: #4af8d4;
+  
+  /* ─── LIGHT MODE (default) ────────────────────────────────────── */
   --ink: #0d1f22;
   --ink-mid: #1e3a3f;
   --ink-soft: #4a6e74;
@@ -8,34 +18,48 @@
   --surface: #ffffff;
   --surface2: #f4f8f8;
   --surface3: #e6f0f1;
-  --accent: #019179;
-  --accent-dark: #00664f;
-  --accent-light: #2da896;
-  --accent-bg: #079898;
-  --neon: #4af8d4;
-  --border: rgba(1, 145, 121, 0.08);
-  --border-strong: rgba(1, 145, 121, 0.15);
+  
+  /* ─── BORDERS & SHADOWS ────────────────────────────────────────── */
+  --border: rgba(8,78,89,0.10);
+  --border-strong: rgba(8,78,89,0.20);
+  --shadow-card: 0 2px 12px rgba(0,79,89,0.07);
+  
+  /* ─── FUNCTIONAL COLORS ────────────────────────────────────────── */
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #4A90E2;
 
-  --font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* ─── TYPOGRAPHY ───────────────────────────────────────────────── */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'DM Mono', monospace;
+  
+  /* ─── SEMANTIC ALIASES ──────────────────────────────────────────── */
+  --accent: var(--teal);
+  --accent-dark: var(--teal-dark);
+  --accent-light: var(--turquoise);
+  --accent-bg: rgba(0,79,89,0.08);
 }
 
-/* DARK MODE */
+/* ─── DARK MODE ─────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
   :root {
     --ink: #ffffff;
     --ink-mid: #e8e8e8;
     --ink-soft: #c0c0c0;
     --ink-faint: #888888;
-    --surface: #0a0a0a;
-    --surface2: #161616;
-    --surface3: #242424;
-    --accent: #4af8d4;
+    
+    --surface: #031e23;
+    --surface2: #061b21;
+    --surface3: #0a2a2e;
+    
+    --accent: var(--neon);
     --accent-dark: #2dd9b5;
     --accent-light: #6cfce8;
-    --accent-bg: #1a4d47;
-    --border: rgba(74, 248, 212, 0.12);
-    --border-strong: rgba(74, 248, 212, 0.2);
+    --accent-bg: rgba(74,248,212,0.12);
+    
+    --border: rgba(74,248,212,0.12);
+    --border-strong: rgba(74,248,212,0.20);
   }
 }
 
